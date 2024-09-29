@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  // javascript tutorial code
+  // Author: Rahmatullah Bizhan
+  // Email: rahmatullahbizhan@gmail.com
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click the Button Game</title>
+<style>
+    button {
+        font-size: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <h2>Click the Button Game</h2>
+    <p>Click the button as many times as you can in 10 seconds!</p>
+    <button id="clickButton">Click Me!</button>
+    <p>Time left: <span id="timeLeft">10</span> seconds</p>
+    <p>Score: <span id="score">0</span></p>
+
+    <script>
+        let score = 0;
+        let timeLeft = 10;
+        let timer;
+
+        document.getElementById('clickButton').addEventListener('click', function() {
+            score++;
+            document.getElementById('score').textContent = score;
+        });
+
+        function countdown() {
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById('timeLeft').textContent = timeLeft + ' seconds';
+
+                if (timeLeft === 0) {
+                    clearInterval(timer);
+                    document.getElementById('clickButton').setAttribute('disabled', 'disabled');
+                    alert('Game Over! Your final score is: ' + score);
+                }
+            }, 1000);
+        }
+
+        countdown();
+    </script>
+</body>
+</html>
